@@ -1,6 +1,6 @@
 # Objective
 Learn and document all my queries used in the online SQL challenge
----
+
 
 ## Command: Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
 Query: 
