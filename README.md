@@ -2,7 +2,7 @@
 Learn and document all my queries used in the online SQL challenge
 ---
 
-# Comand: Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+## Command: Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
 Query: 
 SELECT pt.patient_id, pt.first_name
 FROM patients as pt
@@ -10,7 +10,23 @@ WHERE first_name like 's%'
 AND first_name LIKE '%s'
 AND LENGTH(first_name) >= 6
 
-# Comand: Show first name of patients that start with the letter 'C'
+## Command: Show first name of patients that start with the letter 'C'
 Query: SELECT  pt.first_name
 FROM patients as pt
 WHERE pt.first_name LIKE 'C%'
+
+## Command: Show all patient's first_name, last_name, and birth_date who were born in the 1970s decade. Sort the list starting from the earliest birth_date. 
+SELECT first_name, last_name, birth_date
+FROM patients
+where birth_date LIKE '197%'
+order by birth_date ASC
+
+## Command: Show first name and last name of patients that weight within the range of 100 to 120 (inclusive)
+SELECT first_name, last_name
+FROM patients
+where weight between 100 AND 120
+
+## Command: Update the patients table for the allergies column. If the patient's allergies is null then replace it with 'NKA'
+UPDATE patients
+SET allergies = 'NKA'
+WHERE allergies is NULL
