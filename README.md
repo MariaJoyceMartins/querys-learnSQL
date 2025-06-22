@@ -30,3 +30,10 @@ where weight between 100 AND 120
 UPDATE patients
 SET allergies = 'NKA'
 WHERE allergies is NULL
+
+## Command: Show patient_id, first_name, last_name from patients whose does not have any records in the admissions table. (Their patient_id does not exist in any admissions.patient_id rows.)
+SELECT patients.patient_id, first_name, last_name
+FROM patients 
+LEFT JOIN admissions 
+on patients.patient_id = admissions.patient_id
+WHERE admissions.patient_id is NULL
