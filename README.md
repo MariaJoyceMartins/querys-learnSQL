@@ -71,3 +71,19 @@ AND weight >= 60 and  weight <= 80
 AND patient_id % 2 = 1
 AND (mbd = 2 OR mbd = 3 OR mbd = 12)
 AND city = 'Kingston'
+
+## Command: Show the percent of patients that have 'M' as their gender. Round the answer to the nearest hundreth number and in percent form.
+WITH male_count AS (
+  SELECT COUNT(*) AS m_count
+  FROM patients
+  WHERE gender = 'M'
+),
+total_count AS (
+  SELECT COUNT(*) AS t_count
+  FROM patients
+)
+
+SELECT ROUND((m_count * 1.0 / t_count) * 100, 2) || '%' AS male_percentage
+FROM male_count, total_count;
+
+
