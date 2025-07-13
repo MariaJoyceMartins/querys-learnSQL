@@ -60,3 +60,14 @@ SELECT
 COUNT(CASE WHEN gender = 'M' THEN 1 END) AS male_count,
 COUNT(CASE WHEN gender = 'F' THEN 1 END) AS female_count
 FROM patients
+
+## Command: We are looking for a specific patient. Pull all columns for the patient who matches the following criteria: - First_name contains an 'r' after the first two letters. - Identifies their gender as 'F' - Born in February, May, or December - Their weight would be between 60kg and 80kg - Their patient_id is an odd number - They are from the city 'Kingston'
+SELECT *,
+month(birth_date) as mbd
+FROM patients
+WHERE first_name Like '__%r%'
+AND gender = 'F'
+AND weight >= 60 and  weight <= 80
+AND patient_id % 2 = 1
+AND (mbd = 2 OR mbd = 3 OR mbd = 12)
+AND city = 'Kingston'
